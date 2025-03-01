@@ -11,8 +11,8 @@ ENV GAMESERVER=rustserver
 
 WORKDIR /app
 
-## Auto install game server requirements
-RUN depshortname=$(curl --connect-timeout 10 -s https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/lgsm/data/ubuntu-24.04.csv |awk -v shortname="rust" -F, '$1==shortname {$1=""; print $0}') \
+## Auto install game server requirements 
+RUN depshortname=$(curl --connect-timeout 10 -s https://raw.githubusercontent.com/BeanMachineus/LinuxGSM/master/lgsm/data/ubuntu-24.04.csv |awk -v shortname="rust" -F, '$1==shortname {$1=""; print $0}') \
   && if [ -n "${depshortname}" ]; then \
   echo "**** Install ${depshortname} ****" \
   && apt-get update \
